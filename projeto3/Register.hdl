@@ -3,6 +3,7 @@ CHIP Register{
     OUT out[16];
 
     PARTS:
+    // Cada bit é conectado a um índice de entrada e um índice de saída, formando um registrador de 16 bits.
     Bit(in=in[0], load=load, out=out[0]);
     Bit(in=in[1], load=load, out=out[1]);
     Bit(in=in[2], load=load, out=out[2]);

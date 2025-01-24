@@ -3,6 +3,8 @@ CHIP Bit{
     OUT out;
 
     PARTS:
+    // Flip-Flop guarda o resultado anterior por 1 ciclo de clock.
     DFF(in=muxOUT, out=out, out=outBack);
+    // Mux envia ou o output antigo para o FF novamente, ou a entrada nova.
     Mux(a=outBack, b=in, sel=load, out=muxOUT);
 }

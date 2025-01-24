@@ -3,8 +3,10 @@ CHIP FullAdder{
     OUT sum, carry;
 
     PARTS:
+    // Essas duas Xor cuidam das duas possibilidades da soma ser 1: Apenas um ligado e os três ligados
     Xor(a=a, b=b, out=aXORb);
     Xor(a=aXORb, b=c, out=sum);
+    // O carry liga se: dois 1 simultâneos e um 0 ou os três ligados:
     And(a=a, b=b, out=aANDb);
     And(a=aXORb, b=c, out=aXORbANDc);
     Or(a=aANDb, b=aXORbANDc, out=carry);

@@ -3,6 +3,8 @@ CHIP HalfAdder{
     OUT sum, carry;
 
     PARTS:
+    // Ou um ou o outro para a soma ligar (nunca os dois, se não é carry).
     Xor(a=a, b=b, out=sum);
+    // Apenas se os dois estiverem ligados: 1+1=0 na soma e 1 pro carry.
     And(a=a, b=b, out=carry);
 }

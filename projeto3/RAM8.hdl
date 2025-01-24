@@ -3,7 +3,9 @@ CHIP RAM8{
     OUT out[16];
 
     PARTS:
+    // DMux8Way para selecionar o registrador desejado com addr[].
     DMux8Way(in=load, sel=address, a=select0, b=select1, c=select2, d=select3, e=select4, f=select5, g=select6, h=select7);
+    // Apenas um deles irá receber o load, mas todos recebem a entrada.
     Register(in=in, load=select0, out=r0);
     Register(in=in, load=select1, out=r1);
     Register(in=in, load=select2, out=r2);
@@ -12,5 +14,6 @@ CHIP RAM8{
     Register(in=in, load=select5, out=r5);
     Register(in=in, load=select6, out=r6);
     Register(in=in, load=select7, out=r7);
+    // Mux8Way16 fazendo o processo inverso do início, pegando o registrador selecionado e mandando apenas ele para o output.
     Mux8Way16(a=r0, b=r1, c=r2, d=r3, e=r4, f=r5, g=r6, h=r7, sel=address, out=out);
 }
